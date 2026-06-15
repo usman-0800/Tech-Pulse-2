@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>JSON Formatter &amp; Validator — Free Tool — TechPulse</title>
+<meta name="description" content="Free JSON formatter and validator. Paste raw JSON to format, syntax-highlight, and validate it instantly. Also supports minification."/>
+<link rel="canonical" href="https://techpulse.example.com/tools/json-formatter.html"/>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{font-size:16px}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#fff;color:#1E293B}.site-header{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #E2E8F0;height:64px}.container{width:100%;max-width:1400px;margin-inline:auto;padding-inline:clamp(16px,4vw,32px)}.nav-wrapper{display:flex;align-items:center;justify-content:space-between;height:64px}</style>
+<link rel="stylesheet" href="../css/style.css"/>
+<!-- Favicon Tag Added Here -->
+<link rel="icon" type="image/png" href="../logo.png"/>
+</head>
+<body>
+<header class="site-header" role="banner"><div class="container"><nav class="nav-wrapper" aria-label="Main navigation">
+  <a href="../index.html" class="site-logo"><div class="logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><span class="logo-text">Tech<span>Pulse</span></span><span class="nav-pulse" aria-hidden="true"></span></a>
+  <ul class="primary-nav" role="list">
+    <li><a href="../index.html" class="nav-link">Home</a></li>
+    <li class="nav-dropdown"><button class="nav-link nav-dropdown-trigger">Blog Categories<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><ul class="nav-dropdown-menu" role="menu"><li><a href="../categories/software-testing.html" class="dropdown-item"><span class="item-icon">🧪</span>Software Testing</a></li><li><a href="../categories/cloud-services.html" class="dropdown-item"><span class="item-icon">☁️</span>Cloud Services</a></li><li><a href="../categories/networking.html" class="dropdown-item"><span class="item-icon">🔗</span>Networking</a></li><li><a href="../categories/retail-tech.html" class="dropdown-item"><span class="item-icon">🏪</span>Retail Tech</a></li></ul></li>
+    <li class="nav-dropdown"><button class="nav-link nav-dropdown-trigger active">Tools<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><ul class="nav-dropdown-menu" role="menu"><li><a href="./index.html" class="dropdown-item"><span class="item-icon">🧰</span>All Tools Hub</a></li><li><div class="dropdown-divider"></div></li><li><a href="./xpath-tester.html" class="dropdown-item"><span class="item-icon">🔍</span>XPath &amp; CSS Tester</a></li><li><a href="./profit-calculator.html" class="dropdown-item"><span class="item-icon">💰</span>Profit Calculator</a></li><li><a href="./json-formatter.html" class="dropdown-item"><span class="item-icon">{ }</span>JSON Formatter</a></li><li><a href="./subnet-calculator.html" class="dropdown-item"><span class="item-icon">🌐</span>Subnet Calculator</a></li></ul></li>
+    <li><a href="../contact.html" class="nav-link">Contact Us</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav></div></header>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation"><ul class="mobile-nav-list"><li><a href="../index.html">Home</a></li><li><a href="./index.html">🧰 All Tools</a></li><li><a href="../contact.html">Contact Us</a></li></ul></div>
+
+<div class="container"><div class="adsense-slot adsense-slot--leaderboard" aria-hidden="true"></div></div>
+
+<div class="container">
+  <div class="tool-page-header">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><a href="./index.html">Tools</a><span class="breadcrumb-sep">/</span><span>JSON Formatter</span></nav>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+      <div class="tool-card-icon" style="width:48px;height:48px"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+      <p class="tool-card-status">● STATUS: READY</p>
+    </div>
+    <h1>JSON Formatter &amp; Validator</h1>
+    <p>Paste raw JSON to format, validate, and syntax-highlight it. Supports minification with savings metrics. All processing happens in your browser.</p>
+  </div>
+</div>
+
+<main id="main-content">
+<div class="container">
+  <div class="tool-page-layout" id="json-tool">
+    <div>
+      <div class="tool-interface">
+        <div class="tool-interface-header" aria-hidden="true">
+          <div class="terminal-dots"><div class="terminal-dot dot-red"></div><div class="terminal-dot dot-yellow"></div><div class="terminal-dot dot-green"></div></div>
+          <span class="terminal-title">JSON_FORMATTER.js // TechPulse Dev Tools</span>
+        </div>
+        <div class="tool-interface-body">
+          <div class="form-group">
+            <label class="form-label" for="json-input">JSON Input</label>
+            <textarea id="json-input" class="form-textarea" style="min-height:280px" placeholder='{"name": "TechPulse", "version": "2.0"}' spellcheck="false"></textarea>
+            <span class="form-sublabel">Ctrl+Enter to format</span>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <button id="format-btn" class="btn btn-primary btn-lg">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              Format &amp; Validate
+            </button>
+            <button id="minify-btn" class="btn btn-outline">Minify</button>
+            <button id="copy-btn" class="btn btn-outline">Copy</button>
+            <button id="sample-btn" class="btn btn-outline">Load Sample</button>
+            <button id="clear-btn" class="btn btn-outline">Clear</button>
+          </div>
+
+          <div id="result-box" class="result-chamber" style="display:none" role="region" aria-live="polite">
+            <div class="result-chamber-header">
+              <span id="result-label" class="result-chamber-label">OUTPUT // FORMATTED JSON</span>
+              <span id="result-status" class="result-status"></span>
+            </div>
+            <div id="result-body" class="result-body"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside aria-label="Tool sidebar"><div class="sidebar-inner">
+      <div class="adsense-slot adsense-slot--sidebar" aria-hidden="true"></div>
+      <div class="sidebar-widget"><h3 class="sidebar-widget-title">Quick Tools</h3><div class="sidebar-tools-list"><a href="./xpath-tester.html" class="sidebar-tool-link">🔍 XPath &amp; CSS Tester <span class="sidebar-tool-status">●</span></a><a href="./profit-calculator.html" class="sidebar-tool-link">💰 Profit Calculator <span class="sidebar-tool-status">●</span></a><a href="./subnet-calculator.html" class="sidebar-tool-link">🌐 Subnet Calculator <span class="sidebar-tool-status">●</span></a></div></div>
+    </div></aside>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer" role="contentinfo"><div class="container"><div class="footer-top"><div class="footer-brand"><a href="../index.html" class="site-logo"><div class="logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><span class="logo-text">Tech<span>Pulse</span></span></a><p>B2B tech intelligence for engineers and decision-makers.</p></div><div><p class="footer-col-title">Resources</p><ul class="footer-links"><li><a href="../categories/software-testing.html">Software Testing</a></li><li><a href="../categories/cloud-services.html">Cloud Services</a></li><li><a href="../categories/networking.html">Networking</a></li><li><a href="../categories/retail-tech.html">Retail Tech</a></li></ul></div><div><p class="footer-col-title">Free Tools</p><ul class="footer-links"><li><a href="./xpath-tester.html">XPath &amp; CSS Tester</a></li><li><a href="./profit-calculator.html">Profit Calculator</a></li><li><a href="./json-formatter.html">JSON Formatter</a></li><li><a href="./subnet-calculator.html">Subnet Calculator</a></li></ul></div><div><p class="footer-col-title">Legal</p><ul class="footer-links"><li><a href="../about.html">About Us</a></li><li><a href="../privacy-policy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms</a></li><li><a href="../disclaimer.html">Disclaimer</a></li></ul></div></div><div class="footer-bottom"><p>&copy; <span data-year></span> TechPulse. All rights reserved.</p><div class="footer-legal"><a href="../privacy-policy.html">Privacy</a><a href="../terms.html">Terms</a><a href="../disclaimer.html">Disclaimer</a></div></div></div></footer>
+<script src="../js/main.js" defer></script>
+<script src="../js/tools/json-formatter.js" defer></script>
+</body></html>

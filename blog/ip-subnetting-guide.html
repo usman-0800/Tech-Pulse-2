@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>IP Subnetting Demystified: From CIDR to Broadcast — TechPulse</title>
+<meta name="description" content="A hands-on walkthrough of IPv4 subnetting using binary arithmetic. Includes CIDR reference table and our free Subnet Calculator."/>
+<link rel="canonical" href="https://techpulse.example.com/blog/ip-subnetting-guide.html"/>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{font-size:16px}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#fff;color:#1E293B}.site-header{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #E2E8F0;height:64px}.container{width:100%;max-width:1400px;margin-inline:auto;padding-inline:clamp(16px,4vw,32px)}.nav-wrapper{display:flex;align-items:center;justify-content:space-between;height:64px}</style>
+<link rel="stylesheet" href="../css/style.css"/>
+<link rel="icon" type="image/png" href="../logo.png"/>
+</head>
+<body>
+<header class="site-header" role="banner"><div class="container"><nav class="nav-wrapper" aria-label="Main navigation">
+  <a href="../index.html" class="site-logo" aria-label="TechPulse Home"><div class="logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><span class="logo-text">Tech<span>Pulse</span></span><span class="nav-pulse" aria-hidden="true"></span></a>
+  <ul class="primary-nav" role="list">
+    <li><a href="../index.html" class="nav-link">Home</a></li>
+    <li class="nav-dropdown"><button class="nav-link nav-dropdown-trigger">Blog Categories<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><ul class="nav-dropdown-menu" role="menu"><li><a href="../categories/software-testing.html" class="dropdown-item"><span class="item-icon">🧪</span>Software Testing</a></li><li><a href="../categories/cloud-services.html" class="dropdown-item"><span class="item-icon">☁️</span>Cloud Services</a></li><li><a href="../categories/networking.html" class="dropdown-item"><span class="item-icon">🔗</span>Networking</a></li><li><a href="../categories/retail-tech.html" class="dropdown-item"><span class="item-icon">🏪</span>Retail Tech</a></li></ul></li>
+    <li class="nav-dropdown"><button class="nav-link nav-dropdown-trigger">Tools<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><ul class="nav-dropdown-menu" role="menu"><li><a href="../tools/index.html" class="dropdown-item"><span class="item-icon">🧰</span>All Tools Hub</a></li><li><div class="dropdown-divider"></div></li><li><a href="../tools/subnet-calculator.html" class="dropdown-item"><span class="item-icon">🌐</span>Subnet Calculator</a></li></ul></li>
+    <li><a href="../contact.html" class="nav-link">Contact Us</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav></div></header>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation"><ul class="mobile-nav-list"><li><a href="../index.html">Home</a></li><li><a href="../categories/networking.html">🔗 Networking</a></li><li><a href="../contact.html">Contact Us</a></li></ul></div>
+
+<div class="container"><div class="adsense-slot adsense-slot--leaderboard" aria-hidden="true"></div></div>
+
+<main id="main-content"><div class="container"><div class="post-layout">
+  <article>
+    <header class="post-header">
+      <div class="post-meta"><a href="../categories/networking.html" class="cat-tag cat-network">Networking</a><span class="text-meta">10 min read</span><span class="text-meta">·</span><time datetime="2025-05-29" class="text-meta">May 29, 2025</time></div>
+      <h1 class="post-title">IP Subnetting Demystified: From CIDR to Broadcast in 10 Minutes</h1>
+      <p class="post-subtitle">A hands-on walkthrough of IPv4 subnetting using binary arithmetic. Practice with our free IP Subnet Calculator.</p>
+      <div class="post-author-row"><div class="author-avatar" aria-hidden="true">MW</div><div><p class="author-name">Marcus Webb</p><p class="author-role">Network Engineer · May 29, 2025</p></div></div>
+    </header>
+    <div class="post-hero-img" style="background:linear-gradient(135deg,#C2410C,#0F172A)" role="img" aria-label="IP Subnetting"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+    <div class="adsense-slot adsense-slot--mid-content" aria-hidden="true"></div>
+    <div class="post-body">
+      <p>Subnetting is one of those skills that every network engineer learns, most forget, and everyone needs when something breaks at 2am. This guide gives you the mental model and the math — once, correctly.</p>
+
+      <h2>What is CIDR?</h2>
+      <p>CIDR (Classless Inter-Domain Routing) notation expresses an IP address and its associated routing prefix. <code>192.168.1.0/24</code> means the first 24 bits are the network portion, and the remaining 8 bits are for hosts.</p>
+
+      <h2>The Binary Foundation</h2>
+      <p>Every subnet calculation is binary arithmetic. A /24 network has a subnet mask of <code>11111111.11111111.11111111.00000000</code> in binary — or <code>255.255.255.0</code> in dotted-decimal.</p>
+      <pre><code>IP Address:     192.168.1.100  →  11000000.10101000.00000001.01100100
+Subnet Mask:    255.255.255.0  →  11111111.11111111.11111111.00000000
+                                  ─────────────────────────────────────
+Network Addr:   192.168.1.0    →  11000000.10101000.00000001.00000000
+Broadcast:      192.168.1.255  →  11000000.10101000.00000001.11111111</code></pre>
+
+      <h2>The Three Key Calculations</h2>
+      <ul>
+        <li><strong>Network Address</strong> = IP AND Subnet Mask (bitwise AND)</li>
+        <li><strong>Broadcast Address</strong> = Network OR (NOT Mask) — all host bits set to 1</li>
+        <li><strong>Usable Hosts</strong> = 2^(32−prefix) − 2 (minus network and broadcast)</li>
+      </ul>
+
+      <h2>Common CIDR Reference</h2>
+      <table>
+        <thead><tr><th>CIDR</th><th>Subnet Mask</th><th>Total Addresses</th><th>Usable Hosts</th><th>Use Case</th></tr></thead>
+        <tbody>
+          <tr><td><code>/8</code></td><td>255.0.0.0</td><td>16,777,216</td><td>16,777,214</td><td>Class A Enterprise</td></tr>
+          <tr><td><code>/16</code></td><td>255.255.0.0</td><td>65,536</td><td>65,534</td><td>ISP Allocations</td></tr>
+          <tr><td><code>/24</code></td><td>255.255.255.0</td><td>256</td><td>254</td><td>Standard Office LAN</td></tr>
+          <tr><td><code>/28</code></td><td>255.255.255.240</td><td>16</td><td>14</td><td>Small Segments</td></tr>
+          <tr><td><code>/30</code></td><td>255.255.255.252</td><td>4</td><td>2</td><td>Point-to-Point Links</td></tr>
+          <tr><td><code>/32</code></td><td>255.255.255.255</td><td>1</td><td>1</td><td>Host Route</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Variable Length Subnet Masking (VLSM)</h2>
+      <p>VLSM allows you to split a network into subnets of different sizes — allocating address space efficiently. A <code>/24</code> network can be split into multiple <code>/26</code> networks (62 hosts each), <code>/28</code> networks (14 hosts), and <code>/30</code> point-to-point links — all without wasting address space.</p>
+
+      <h2>Practice with Our Subnet Calculator</h2>
+      <p>Rather than doing the binary math by hand, use our <a href="../tools/subnet-calculator.html">free IP Subnet Calculator</a> to verify your work. Enter any IP and CIDR prefix to instantly get: Network Address, Broadcast, Subnet Mask, Wildcard Mask, Usable Hosts, and full binary notation.</p>
+
+      <h2>|</h2>
+      <blockquote>"Every network problem eventually comes down to understanding where the packet is — and subnetting tells you if it should even be there."</blockquote>
+
+      <div class="adsense-slot adsense-slot--rectangle" aria-hidden="true"></div>
+      <div class="post-tags"><span>Tags:</span><span class="tag-pill">Subnetting</span><span class="tag-pill">CIDR</span><span class="tag-pill">IPv4</span><span class="tag-pill">Networking</span><span class="tag-pill">VLSM</span></div>
+      <div class="author-bio"><div class="author-bio-avatar" aria-hidden="true">MW</div><div><p class="author-bio-name">Marcus Webb</p><p class="author-bio-role">// Network Engineer</p><p class="author-bio-desc">Senior network engineer with 15 years designing enterprise LAN/WAN infrastructure. Specializes in MPLS, SD-WAN, and network security architecture.</p></div></div>
+    </div>
+  </article>
+  <aside aria-label="Article sidebar"><div class="sidebar-inner">
+    <div class="adsense-slot adsense-slot--sidebar" aria-hidden="true"></div>
+    <div class="sidebar-widget"><h3 class="sidebar-widget-title">Try The Tool</h3><p style="font-size:.875rem;color:var(--meta);margin-bottom:12px">Calculate any subnet instantly:</p><a href="../tools/subnet-calculator.html" class="btn btn-primary btn-full">🌐 Open Subnet Calculator</a></div>
+    <div class="sidebar-widget"><h3 class="sidebar-widget-title">Quick Tools</h3><div class="sidebar-tools-list"><a href="../tools/json-formatter.html" class="sidebar-tool-link">{ } JSON Formatter <span class="sidebar-tool-status">●</span></a><a href="../tools/xpath-tester.html" class="sidebar-tool-link">🔍 XPath &amp; CSS Tester <span class="sidebar-tool-status">●</span></a></div></div>
+  </div></aside>
+</div></div></main>
+
+<footer class="site-footer" role="contentinfo"><div class="container"><div class="footer-top"><div class="footer-brand"><a href="../index.html" class="site-logo"><div class="logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><span class="logo-text">Tech<span>Pulse</span></span></a><p>B2B tech intelligence for engineers and decision-makers.</p></div><div><p class="footer-col-title">Resources</p><ul class="footer-links"><li><a href="../categories/software-testing.html">Software Testing</a></li><li><a href="../categories/cloud-services.html">Cloud Services</a></li><li><a href="../categories/networking.html">Networking</a></li><li><a href="../categories/retail-tech.html">Retail Tech</a></li></ul></div><div><p class="footer-col-title">Free Tools</p><ul class="footer-links"><li><a href="../tools/xpath-tester.html">XPath &amp; CSS Tester</a></li><li><a href="../tools/profit-calculator.html">Profit Calculator</a></li><li><a href="../tools/json-formatter.html">JSON Formatter</a></li><li><a href="../tools/subnet-calculator.html">Subnet Calculator</a></li></ul></div><div><p class="footer-col-title">Legal</p><ul class="footer-links"><li><a href="../about.html">About Us</a></li><li><a href="../privacy-policy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms</a></li><li><a href="../disclaimer.html">Disclaimer</a></li></ul></div></div><div class="footer-bottom"><p>&copy; <span data-year></span> TechPulse. All rights reserved.</p><div class="footer-legal"><a href="../privacy-policy.html">Privacy</a><a href="../terms.html">Terms</a><a href="../disclaimer.html">Disclaimer</a></div></div></div></footer>
+<script src="../js/main.js" defer></script>
+</body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>XPath &amp; CSS Selector Tester — Free Tool — TechPulse</title>
+<meta name="description" content="Test XPath expressions and CSS selectors against any HTML instantly in your browser. Free, no signup, zero data sent to servers."/>
+<link rel="canonical" href="https://techpulse.example.com/tools/xpath-tester.html"/>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{font-size:16px}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#fff;color:#1E293B}.site-header{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #E2E8F0;height:64px}.container{width:100%;max-width:1400px;margin-inline:auto;padding-inline:clamp(16px,4vw,32px)}.nav-wrapper{display:flex;align-items:center;justify-content:space-between;height:64px}</style>
+<link rel="stylesheet" href="../css/style.css"/>
+<link rel="icon" type="image/png" href="../logo.png"/>
+</head>
+<body>
+<header class="site-header" role="banner"><div class="container"><nav class="nav-wrapper" aria-label="Main navigation">
+  <a href="../index.html" class="site-logo"><div class="logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><span class="logo-text">Tech<span>Pulse</span></span><span class="nav-pulse" aria-hidden="true"></span></a>
+  <ul class="primary-nav" role="list">
+    <li><a href="../index.html" class="nav-link">Home</a></li>
+    <li class="nav-dropdown"><button class="nav-link nav-dropdown-trigger">Blog Categories<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><ul class="nav-dropdown-menu" role="menu"><li><a href="../categories/software-testing.html" class="dropdown-item"><span class="item-icon">🧪</span>Software Testing</a></li><li><a href="../categories/cloud-services.html" class="dropdown-item"><span class="item-icon">☁️</span>Cloud Services</a></li><li><a href="../categories/networking.html" class="dropdown-item"><span class="item-icon">🔗</span>Networking</a></li><li><a href="../categories/retail-tech.html" class="dropdown-item"><span class="item-icon">🏪</span>Retail Tech</a></li></ul></li>
+    <li class="nav-dropdown"><button class="nav-link nav-dropdown-trigger active">Tools<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><ul class="nav-dropdown-menu" role="menu"><li><a href="./index.html" class="dropdown-item"><span class="item-icon">🧰</span>All Tools Hub</a></li><li><div class="dropdown-divider"></div></li><li><a href="./xpath-tester.html" class="dropdown-item"><span class="item-icon">🔍</span>XPath &amp; CSS Tester</a></li><li><a href="./profit-calculator.html" class="dropdown-item"><span class="item-icon">💰</span>Profit Calculator</a></li><li><a href="./json-formatter.html" class="dropdown-item"><span class="item-icon">{ }</span>JSON Formatter</a></li><li><a href="./subnet-calculator.html" class="dropdown-item"><span class="item-icon">🌐</span>Subnet Calculator</a></li></ul></li>
+    <li><a href="../contact.html" class="nav-link">Contact Us</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav></div></header>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation"><ul class="mobile-nav-list"><li><a href="../index.html">Home</a></li><li><a href="./index.html">🧰 All Tools</a></li><li><a href="../contact.html">Contact Us</a></li></ul></div>
+
+<div class="container"><div class="adsense-slot adsense-slot--leaderboard" aria-hidden="true"></div></div>
+
+<div class="container">
+  <div class="tool-page-header">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><a href="./index.html">Tools</a><span class="breadcrumb-sep">/</span><span>XPath &amp; CSS Tester</span></nav>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+      <div class="tool-card-icon" style="width:48px;height:48px"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <p class="tool-card-status">● STATUS: READY</p>
+    </div>
+    <h1>XPath &amp; CSS Selector Tester</h1>
+    <p>Paste any HTML, choose your selector type, and test your expression instantly — all in-browser. Zero data sent to servers.</p>
+  </div>
+</div>
+
+<main id="main-content" id="xpath-tool">
+<div class="container">
+  <div class="tool-page-layout" id="xpath-tool">
+    <div>
+      <div class="tool-interface">
+        <div class="tool-interface-header" aria-hidden="true">
+          <div class="terminal-dots"><div class="terminal-dot dot-red"></div><div class="terminal-dot dot-yellow"></div><div class="terminal-dot dot-green"></div></div>
+          <span class="terminal-title">XPATH_CSS_TESTER.js // TechPulse Dev Tools</span>
+        </div>
+        <div class="tool-interface-body">
+          <div class="form-group">
+            <label class="form-label" for="html-input">HTML Input <span style="font-family:monospace;font-size:.75rem;color:var(--meta);font-weight:400;margin-left:8px">— Paste your HTML here</span></label>
+            <textarea id="html-input" class="form-textarea" style="min-height:220px" placeholder="<div id='main'>\n  <h1 class='title'>Hello World</h1>\n</div>" spellcheck="false" aria-describedby="html-hint"></textarea>
+            <span id="html-hint" class="form-sublabel">Full HTML documents or fragments are both supported.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="selector-input">Selector</label>
+            <div class="selector-row">
+              <select id="selector-type" class="form-input form-select" aria-label="Selector type">
+                <option value="xpath">XPath</option>
+                <option value="css">CSS Selector</option>
+              </select>
+              <input type="text" id="selector-input" class="form-input form-mono" placeholder='//h2[@class="post-title"]' spellcheck="false"/>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <button id="run-btn" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Test Selector
+            </button>
+            <button id="sample-btn" class="btn btn-outline">Load Sample</button>
+            <button id="clear-btn" class="btn btn-outline">Clear All</button>
+          </div>
+          <p style="font-size:.8rem;color:var(--meta);margin-top:10px">Keyboard shortcut: <kbd class="kbd">Ctrl + Enter</kbd></p>
+
+          <div id="result-box" class="result-chamber" style="display:none" role="region" aria-label="Results" aria-live="polite">
+            <div class="result-chamber-header">
+              <span id="result-label" class="result-chamber-label">OUTPUT // MATCHED ELEMENTS</span>
+              <span id="result-status" class="result-status"></span>
+            </div>
+            <div id="result-body" class="result-body"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;padding:24px;background:var(--bg-ghost);border:1px solid var(--border);border-radius:10px;overflow-x:auto">
+        <p style="font-family:monospace;font-size:.875rem;text-transform:uppercase;letter-spacing:.06em;color:var(--meta);margin-bottom:16px;font-weight:700">Quick Reference</p>
+        <table style="width:100%;border-collapse:collapse;font-size:.875rem;min-width:480px">
+          <thead><tr style="border-bottom:1px solid var(--border)"><th style="text-align:left;padding:8px;color:var(--meta);font-weight:600">XPath</th><th style="text-align:left;padding:8px;color:var(--meta);font-weight:600">CSS</th><th style="text-align:left;padding:8px;color:var(--meta);font-weight:600">Matches</th></tr></thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px;font-family:monospace;font-size:.8rem;color:var(--accent-dark)">//div</td><td style="padding:8px;font-family:monospace;font-size:.8rem;color:var(--accent-dark)">div</td><td style="padding:8px">All div elements</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px;font-family:monospace;font-size:.8rem;color:var(--accent-dark)">//div[@id='main']</td><td style="padding:8px;font-family:monospace;font-size:.8rem;color:var(--accent-dark)">#main</td><td style="padding:8px">Element with id "main"</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px;font-family:monospace;font-size:.8rem;color:var(--accent-dark)">//a[@href]</td><td style="padding:8px;font-family:monospace;font-size:.8rem;color:var(--accent-dark)">a[href]</td><td style="padding:8px">All links with href</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px;font-family:monospace;font-size:.8rem;color:var(--accent-dark)">//h2[contains(text(),'Guide')]</td><td style="padding:8px;font-family:monospace;font-size:.8rem;color:var(--accent-dark)">—</td><td style="padding:8px">H2 containing "Guide"</td></tr>
+            <tr><td style="padding:8px;font-family:monospace;font-size:.8rem;color:var(--accent-dark)">(//p)[1]</td><td style="padding:8px;font-family:monospace;font-size:.8rem;color:var(--accent-dark)">p:first-of-type</td><td style="padding:8px">First paragraph</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <aside aria-label="Tool sidebar"><div class="sidebar-inner">
+      <div class="adsense-slot adsense-slot--sidebar" aria-hidden="true"></div>
+      <div class="sidebar-widget"><h3 class="sidebar-widget-title">Quick Tools</h3><div class="sidebar-tools-list"><a href="./profit-calculator.html" class="sidebar-tool-link">💰 Profit Calculator <span class="sidebar-tool-status">●</span></a><a href="./json-formatter.html" class="sidebar-tool-link">{ } JSON Formatter <span class="sidebar-tool-status">●</span></a><a href="./subnet-calculator.html" class="sidebar-tool-link">🌐 Subnet Calculator <span class="sidebar-tool-status">●</span></a></div></div>
+      <div class="sidebar-widget"><h3 class="sidebar-widget-title">Related Article</h3><div class="sidebar-post-list"><div class="sidebar-post-item"><div class="sidebar-post-thumb" style="background:linear-gradient(135deg,#1D4ED8,#0F172A)"></div><div><a href="../blog/xpath-guide-2024.html" class="sidebar-post-title">XPath &amp; CSS Selector Mastery</a><p class="sidebar-post-date">Jun 3, 2025</p></div></div></div></div>
+    </div></aside>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer" role="contentinfo"><div class="container"><div class="footer-top"><div class="footer-brand"><a href="../index.html" class="site-logo"><div class="logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><span class="logo-text">Tech<span>Pulse</span></span></a><p>B2B tech intelligence for engineers and decision-makers.</p></div><div><p class="footer-col-title">Resources</p><ul class="footer-links"><li><a href="../categories/software-testing.html">Software Testing</a></li><li><a href="../categories/cloud-services.html">Cloud Services</a></li><li><a href="../categories/networking.html">Networking</a></li><li><a href="../categories/retail-tech.html">Retail Tech</a></li></ul></div><div><p class="footer-col-title">Free Tools</p><ul class="footer-links"><li><a href="./xpath-tester.html">XPath &amp; CSS Tester</a></li><li><a href="./profit-calculator.html">Profit Calculator</a></li><li><a href="./json-formatter.html">JSON Formatter</a></li><li><a href="./subnet-calculator.html">Subnet Calculator</a></li></ul></div><div><p class="footer-col-title">Legal</p><ul class="footer-links"><li><a href="../about.html">About Us</a></li><li><a href="../privacy-policy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms</a></li><li><a href="../disclaimer.html">Disclaimer</a></li></ul></div></div><div class="footer-bottom"><p>&copy; <span data-year></span> TechPulse. All rights reserved.</p><div class="footer-legal"><a href="../privacy-policy.html">Privacy</a><a href="../terms.html">Terms</a><a href="../disclaimer.html">Disclaimer</a></div></div></div></footer>
+<script src="../js/main.js" defer></script>
+<script src="../js/tools/xpath-tester.js" defer></script>
+</body></html>

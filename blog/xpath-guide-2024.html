@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>XPath &amp; CSS Selector Guide for Test Automation — TechPulse</title>
+<meta name="description" content="Master XPath axes, predicates, and CSS pseudo-selectors for Selenium, Playwright, and Cypress. Complete 2024 guide."/>
+<link rel="canonical" href="https://techpulse.example.com/blog/xpath-guide-2024.html"/>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{font-size:16px}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#fff;color:#1E293B}.site-header{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #E2E8F0;height:64px}.container{width:100%;max-width:1400px;margin-inline:auto;padding-inline:clamp(16px,4vw,32px)}.nav-wrapper{display:flex;align-items:center;justify-content:space-between;height:64px}</style>
+<link rel="stylesheet" href="../css/style.css"/>
+<link rel="icon" type="image/png" href="../logo.png"/>
+</head>
+<body>
+<header class="site-header" role="banner"><div class="container"><nav class="nav-wrapper" aria-label="Main navigation">
+  <a href="../index.html" class="site-logo" aria-label="TechPulse Home"><div class="logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><span class="logo-text">Tech<span>Pulse</span></span><span class="nav-pulse" aria-hidden="true"></span></a>
+  <ul class="primary-nav" role="list">
+    <li><a href="../index.html" class="nav-link">Home</a></li>
+    <li class="nav-dropdown"><button class="nav-link nav-dropdown-trigger">Blog Categories<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><ul class="nav-dropdown-menu" role="menu"><li><a href="../categories/software-testing.html" class="dropdown-item"><span class="item-icon">🧪</span>Software Testing</a></li><li><a href="../categories/cloud-services.html" class="dropdown-item"><span class="item-icon">☁️</span>Cloud Services</a></li><li><a href="../categories/networking.html" class="dropdown-item"><span class="item-icon">🔗</span>Networking</a></li><li><a href="../categories/retail-tech.html" class="dropdown-item"><span class="item-icon">🏪</span>Retail Tech</a></li></ul></li>
+    <li class="nav-dropdown"><button class="nav-link nav-dropdown-trigger">Tools<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><ul class="nav-dropdown-menu" role="menu"><li><a href="../tools/index.html" class="dropdown-item"><span class="item-icon">🧰</span>All Tools Hub</a></li><li><div class="dropdown-divider"></div></li><li><a href="../tools/xpath-tester.html" class="dropdown-item"><span class="item-icon">🔍</span>XPath &amp; CSS Tester</a></li><li><a href="../tools/profit-calculator.html" class="dropdown-item"><span class="item-icon">💰</span>Profit Calculator</a></li><li><a href="../tools/json-formatter.html" class="dropdown-item"><span class="item-icon">{ }</span>JSON Formatter</a></li><li><a href="../tools/subnet-calculator.html" class="dropdown-item"><span class="item-icon">🌐</span>Subnet Calculator</a></li></ul></li>
+    <li><a href="../contact.html" class="nav-link">Contact Us</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav></div></header>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation"><ul class="mobile-nav-list"><li><a href="../index.html">Home</a></li><li><a href="../categories/software-testing.html">🧪 Software Testing</a></li><li><a href="../tools/xpath-tester.html">🔍 XPath &amp; CSS Tester</a></li><li><a href="../contact.html">Contact Us</a></li></ul></div>
+
+<div class="container"><div class="adsense-slot adsense-slot--leaderboard" aria-hidden="true"></div></div>
+
+<main id="main-content"><div class="container">
+  <div class="post-layout">
+    <article>
+      <header class="post-header">
+        <div class="post-meta">
+          <a href="../categories/software-testing.html" class="cat-tag cat-software">Software Testing</a>
+          <span class="text-meta">12 min read</span><span class="text-meta">·</span>
+          <time datetime="2025-06-03" class="text-meta">Jun 3, 2025</time>
+        </div>
+        <h1 class="post-title">The Complete XPath &amp; CSS Selector Guide for Modern Test Automation</h1>
+        <p class="post-subtitle">Master XPath axes, predicates, and CSS pseudo-selectors. Includes live examples you can test directly in our XPath Tester tool.</p>
+        <div class="post-author-row">
+          <div class="author-avatar" aria-hidden="true">AM</div>
+          <div><p class="author-name">Alex Morgan</p><p class="author-role">Senior QA Engineer · Jun 3, 2025</p></div>
+        </div>
+      </header>
+
+      <div class="post-hero-img" role="img" aria-label="XPath and CSS Selectors"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+
+      <div class="adsense-slot adsense-slot--mid-content" aria-hidden="true"></div>
+
+      <div class="post-body">
+        <p>Whether you're maintaining a Selenium test suite or scraping structured data, the quality of your XPath or CSS selectors is the single biggest factor in test stability. Bad selectors break silently; good ones survive redesigns.</p>
+
+        <h2>1. XPath Fundamentals: The Anatomy of an Expression</h2>
+        <p>XPath (XML Path Language) is a query language for selecting nodes in an XML/HTML document tree. Every XPath expression has two core components: the <strong>Axis</strong> (direction of navigation) and the <strong>Node Test</strong> (element type to match), optionally filtered by a <strong>Predicate</strong>.</p>
+        <p>Basic syntax: <code>axis::node-test[predicate]</code></p>
+
+        <h3>Absolute vs. Relative XPath</h3>
+        <p><strong>Never use absolute XPath in production tests.</strong> It breaks with any structural change. Always prefer relative XPath:</p>
+        <pre><code>//input[@id='username']
+//button[contains(@class,'submit') and @type='submit']
+//div[@data-testid='login-form']//input</code></pre>
+
+        <h2>2. XPath Axes — The Power You're Not Using</h2>
+        <p>Most engineers only use <code>//</code> (descendant-or-self). Axes unlock navigation in every direction:</p>
+        <ul>
+          <li><strong>parent</strong> — <code>//span[@class='error']/parent::div</code></li>
+          <li><strong>following-sibling</strong> — <code>//h2/following-sibling::p[1]</code></li>
+          <li><strong>ancestor</strong> — <code>//input/ancestor::form</code></li>
+          <li><strong>preceding-sibling</strong> — <code>//td[3]/preceding-sibling::td[1]</code></li>
+        </ul>
+
+        <h2>3. XPath Predicates: Precision Filtering</h2>
+        <pre><code>// By text content
+//button[text()='Submit']
+//h2[contains(text(),'Testing')]
+
+// By position
+(//table[@class='data-grid']//tr)[last()]
+
+// Combining predicates
+//div[@class='card' and @data-status='active'][not(@hidden)]</code></pre>
+
+        <h2>4. CSS Selectors: When to Use Them</h2>
+        <p>CSS selectors are generally faster in modern browsers. Use them when you can — fall back to XPath for text-based or ancestor traversal.</p>
+        <pre><code>/* Attribute selectors */
+input[type="email"]
+a[href^="https"]
+[data-testid="submit-btn"]
+
+/* Pseudo-selectors */
+li:first-child
+input:not([disabled])
+:focus-visible</code></pre>
+
+        <h2>5. Framework-Specific Implementation</h2>
+        <h3>Selenium WebDriver (Python)</h3>
+        <pre><code>from selenium.webdriver.common.by import By
+driver.find_element(By.XPATH, "//input[@data-testid='email']")
+driver.find_element(By.CSS_SELECTOR, "input[data-testid='email']")</code></pre>
+
+        <h3>Playwright (TypeScript)</h3>
+        <pre><code>await page.locator("xpath=//button[text()='Continue']").click();
+await page.locator("[data-testid='submit']").fill("value");</code></pre>
+
+        <h3>Cypress</h3>
+        <pre><code>cy.get('[data-testid="submit-btn"]').click();
+cy.xpath('//button[contains(text(),"Submit")]').click();</code></pre>
+
+        <h2>6. Best Practices for Selector Stability</h2>
+        <ul>
+          <li>Use <code>data-testid</code> or <code>data-cy</code> attributes — negotiate with devs to add them</li>
+          <li>Avoid position-based selectors in dynamic lists</li>
+          <li>Avoid auto-generated class names (CSS Modules, Tailwind JIT)</li>
+          <li>Test all selectors with our <a href="../tools/xpath-tester.html">XPath &amp; CSS Tester tool</a> before committing</li>
+        </ul>
+        <blockquote>"A test suite is only as reliable as its selectors. One flaky selector can destabilize an entire CI pipeline."</blockquote>
+
+        <div class="adsense-slot adsense-slot--rectangle" aria-hidden="true"></div>
+
+        <div class="post-tags">
+          <span>Tags:</span>
+          <span class="tag-pill">XPath</span><span class="tag-pill">CSS Selectors</span><span class="tag-pill">Selenium</span><span class="tag-pill">Playwright</span><span class="tag-pill">Cypress</span><span class="tag-pill">Test Automation</span>
+        </div>
+
+        <div class="author-bio">
+          <div class="author-bio-avatar" aria-hidden="true">AM</div>
+          <div>
+            <p class="author-bio-name">Alex Morgan</p>
+            <p class="author-bio-role">// Senior QA Engineer</p>
+            <p class="author-bio-desc">Practitioner and technical writer at TechPulse, covering Software Testing with hands-on depth. 10+ years building test automation frameworks for enterprise SaaS products.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <aside aria-label="Article sidebar">
+      <div class="sidebar-inner">
+        <div class="adsense-slot adsense-slot--sidebar" aria-hidden="true"></div>
+        <div class="sidebar-widget">
+          <h3 class="sidebar-widget-title">Try The Tool</h3>
+          <p style="font-size:.875rem;color:var(--meta);margin-bottom:12px">Test XPath examples from this article:</p>
+          <a href="../tools/xpath-tester.html" class="btn btn-primary btn-full">🔍 Open XPath Tester</a>
+        </div>
+        <div class="sidebar-widget">
+          <h3 class="sidebar-widget-title">Related Articles</h3>
+          <div class="sidebar-post-list">
+            <div class="sidebar-post-item"><div class="sidebar-post-thumb" style="background:linear-gradient(135deg,#0D9488,#0F172A)"></div><div><a href="./aws-cost-optimization.html" class="sidebar-post-title">AWS Cost Optimization: 12 Strategies</a><p class="sidebar-post-date">Jun 5, 2025</p></div></div>
+            <div class="sidebar-post-item"><div class="sidebar-post-thumb" style="background:linear-gradient(135deg,#C2410C,#0F172A)"></div><div><a href="./ip-subnetting-guide.html" class="sidebar-post-title">IP Subnetting Demystified</a><p class="sidebar-post-date">May 29, 2025</p></div></div>
+          </div>
+        </div>
+        <div class="sidebar-widget">
+          <h3 class="sidebar-widget-title">Quick Tools</h3>
+          <div class="sidebar-tools-list">
+            <a href="../tools/json-formatter.html" class="sidebar-tool-link">{ } JSON Formatter <span class="sidebar-tool-status">●</span></a>
+            <a href="../tools/subnet-calculator.html" class="sidebar-tool-link">🌐 Subnet Calculator <span class="sidebar-tool-status">●</span></a>
+            <a href="../tools/profit-calculator.html" class="sidebar-tool-link">💰 Profit Calculator <span class="sidebar-tool-status">●</span></a>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div></main>
+
+<footer class="site-footer" role="contentinfo"><div class="container">
+  <div class="footer-top">
+    <div class="footer-brand"><a href="../index.html" class="site-logo"><div class="logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><span class="logo-text">Tech<span>Pulse</span></span></a><p>B2B tech intelligence for engineers and decision-makers.</p></div>
+    <div><p class="footer-col-title">Resources</p><ul class="footer-links"><li><a href="../categories/software-testing.html">Software Testing</a></li><li><a href="../categories/cloud-services.html">Cloud Services</a></li><li><a href="../categories/networking.html">Networking</a></li><li><a href="../categories/retail-tech.html">Retail Tech</a></li></ul></div>
+    <div><p class="footer-col-title">Free Tools</p><ul class="footer-links"><li><a href="../tools/xpath-tester.html">XPath &amp; CSS Tester</a></li><li><a href="../tools/profit-calculator.html">Profit Calculator</a></li><li><a href="../tools/json-formatter.html">JSON Formatter</a></li><li><a href="../tools/subnet-calculator.html">Subnet Calculator</a></li></ul></div>
+    <div><p class="footer-col-title">Legal</p><ul class="footer-links"><li><a href="../about.html">About Us</a></li><li><a href="../privacy-policy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms</a></li><li><a href="../disclaimer.html">Disclaimer</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; <span data-year></span> TechPulse. All rights reserved.</p><div class="footer-legal"><a href="../privacy-policy.html">Privacy</a><a href="../terms.html">Terms</a><a href="../disclaimer.html">Disclaimer</a></div></div>
+</div></footer>
+<script src="../js/main.js" defer></script>
+</body></html>
